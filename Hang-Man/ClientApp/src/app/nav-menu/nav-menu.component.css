@@ -1,0 +1,38 @@
+.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    font-size: 26px;
+    color: #fff;
+}
+    .navbar-brand:hover {
+        color: #fff;
+    }
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+.h-10 {
+    height:8vh;
+}
+.backgroundcol {
+    background-color: #0F172A;    
+}
+.nav-link {
+    font-size: 20px;
+    color: #fff;
+}
+    .nav-link:hover {
+        font-size: 22px;
+    }
+
+
+    
