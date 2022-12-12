@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { NgIf, NgClass } from '@angular/common';
 import { MatDateFormats } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { Graph } from '../graph.model';
 
 
 @Component({
@@ -18,8 +18,14 @@ export class HomeComponent implements OnInit {
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
     
-    
-
+    title = 'Bar chart with Angular';
+    public Score: Array<Graph> = [
+        { Value: 350, Color: '#747474', Size: '', Legend: '5' },
+        { Value: 2000, Color: '#747474', Size: '', Legend: '4' },
+        { Value: 1000, Color: '#747474', Size: '', Legend: '3' },
+        { Value: 500, Color: '#747474', Size: '', Legend: '2' },
+        { Value: 500, Color: '#747474', Size: '', Legend: '1' },
+    ];
     ngOnInit() {
         this.wordOFtheDay = this.wordOFtheDay.toUpperCase();       
         const today = new Date();
