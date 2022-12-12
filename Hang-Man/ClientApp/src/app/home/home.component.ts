@@ -18,13 +18,14 @@ export class HomeComponent implements OnInit {
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
     
-    title = 'Bar chart with Angular';
+    
     public Score: Array<Graph> = [
-        { Value: 350, Color: '#747474', Size: '', Legend: '5' },
-        { Value: 2000, Color: '#747474', Size: '', Legend: '4' },
-        { Value: 1000, Color: '#747474', Size: '', Legend: '3' },
-        { Value: 500, Color: '#747474', Size: '', Legend: '2' },
-        { Value: 500, Color: '#747474', Size: '', Legend: '1' },
+        { Value: 5, Color: '#475569', Size: '', Legend: '5' },
+        { Value: 12, Color: '#475569', Size: '', Legend: '4' },
+        { Value: 15, Color: '#1b6ec2', Size: '', Legend: '3' },
+        { Value: 6, Color: '#475569', Size: '', Legend: '2' },
+        { Value: 4, Color: '#475569', Size: '', Legend: '1' },
+        { Value: 0, Color: '#475569', Size: '', Legend: 'X' },
     ];
     ngOnInit() {
         this.wordOFtheDay = this.wordOFtheDay.toUpperCase();       
