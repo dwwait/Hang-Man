@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule, MatInputModule,  MatNativeDateModule } from '@angular/material';
 import { CalenderComponent } from './calender/calender.component';
-
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
     declarations: [    
@@ -25,6 +25,7 @@ import { CalenderComponent } from './calender/calender.component';
     CounterComponent,
     FetchDataComponent,
     CalenderComponent,
+    BarChartComponent
     ],
     imports: [
      
@@ -41,8 +42,7 @@ import { CalenderComponent } from './calender/calender.component';
     MatDatepickerModule,
     MatCardModule,
     MatInputModule,
-        MatNativeDateModule,
-
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
