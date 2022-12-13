@@ -11,22 +11,12 @@ import { Graph } from '../graph.model';
     styleUrls: ['./home.component.css']
 })
 
-@HostListener('window:resize', ['$event'])
-
-
 export class HomeComponent implements OnInit {
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
+    dateTomorrow: Date;
     
-    
-    public Score: Array<Graph> = [
-        { Value: 5, Color: '#475569', Size: '', Legend: '5' },
-        { Value: 12, Color: '#475569', Size: '', Legend: '4' },
-        { Value: 15, Color: '#1b6ec2', Size: '', Legend: '3' },
-        { Value: 6, Color: '#475569', Size: '', Legend: '2' },
-        { Value: 4, Color: '#475569', Size: '', Legend: '1' },
-        { Value: 0, Color: '#475569', Size: '', Legend: 'X' },
-    ];
+    public Score: Array<Graph>; 
     ngOnInit() {
         this.wordOFtheDay = this.wordOFtheDay.toUpperCase();       
         const today = new Date();
@@ -40,45 +30,17 @@ export class HomeComponent implements OnInit {
                 document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" value="" style="${styleString}" disabled></button>`);
         }  
                
-        document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();
-        
-        //var myChart = new Chart('myChart', {
-        //    type: 'bar',
-        //    data: {
-        //        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        //        datasets: [{
-        //            label: '# of Votes',
-        //            data: [12, 19, 3, 5, 2, 3],
-        //            backgroundColor: [
-        //                'rgba(255,99,132,0.2)',
-        //                'rgba(54,162,235,0.2)',
-        //                'rgba(255,206,86,0.2)',
-        //                'rgba(75,192,192,0.2)',
-        //                'rgba(153,102,255,0.2)',
-        //                'rgba(255,159,64,0.2)'
-        //            ],
-        //            borderColor: [
-        //                'rgba(255,99,132,1)',
-        //                'rgba(54,162,235,1)',
-        //                'rgba(255,206,86,1)',
-        //                'rgba(75,192,192,1)',
-        //                'rgba(153,102,255,1)',
-        //                'rgba(255,159,64,1)'
-        //            ],
-        //            borderWidth: 1
-        //        }]
-        //    },
-        //    options: {
-        //        scales: {
-        //            y: {
-        //                beginAtZero: true
-        //            }
-        //        }
-        //    }
-        //});
-        
-    }    
-    
+        document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();//Month is 0 index while rest is not
+        this.dateTomorrow = new Date(`${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getDate() +1}T00:00:00`);
+        this.Score = [
+            { Value: 5, Color: '#475569', Size: '', Legend: '5' },
+            { Value: 12, Color: '#475569', Size: '', Legend: '4' },
+            { Value: 15, Color: '#1b6ec2', Size: '', Legend: '3' },
+            { Value: 6, Color: '#475569', Size: '', Legend: '2' },
+            { Value: 4, Color: '#475569', Size: '', Legend: '1' },
+            { Value: 0, Color: '#475569', Size: '', Legend: 'X' },
+        ];         
+    }       
 
     alphabet: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
         "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
@@ -121,12 +83,12 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    attempts: number = 4;//Beteken mag net 4 verkeurd kry en continue met game, anders op  5de verkeurde attempt is game over
+    attemptsTotal: number = 4;//Beteken mag net 4 verkeurd kry en continue met game, anders op  5de verkeurde attempt is game over
     attemptsFailed: number = 0;
 
     gameOver: boolean = false;
     submit() {
-        if (this.selectedKey != null && this.gameOver == false) {            
+        if (this.selectedKey != null && this.gameOver == false) {
             var letter = this.alphabet[this.selectedKey];
             var button = document.getElementById(`btn${this.selectedKey + 1}`);
             if (this.wordOFtheDay.includes(letter)) {
@@ -157,7 +119,7 @@ export class HomeComponent implements OnInit {
 
                 var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
                 //play anitmation - for now its just the buttons
-                if (this.attemptsFailed < this.attempts) {
+                if (this.attemptsFailed < this.attemptsTotal) {
                     
                     buttonTest.style.backgroundColor = 'red';
                     buttonTest.textContent = 'X';

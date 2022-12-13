@@ -16,7 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule, MatInputModule,  MatNativeDateModule } from '@angular/material';
 import { CalenderComponent } from './calender/calender.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
-
+import { CountdownTimerModule } from 'angular-countdown-timer';
 @NgModule({
     declarations: [    
     AppComponent,
@@ -42,7 +42,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     MatDatepickerModule,
     MatCardModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CountdownTimerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
@@ -50,3 +51,11 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//TODO
+//info
+//Bind keys to keyboard - enter backspace dlt tab?
+//actual data
+//cookies
+//db

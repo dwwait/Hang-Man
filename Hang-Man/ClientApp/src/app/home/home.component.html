@@ -99,6 +99,14 @@
                         <app-bar-chart [List]='Score'></app-bar-chart>
                     </div>
                 </div>
+                <!--<div class="line"></div>-->
+                <div style="display: flex; margin-top:25px;justify-content:space-around">
+                    <div>
+                        <span>Volgende spel</span><br/>
+                        <countdown-timer [end]="dateTomorrow" style="margin-left:15px"></countdown-timer>
+                    </div>
+                    <button id="btnShare" class="btn btn-primary"><i class="fa fa-share-from-square mr-2"></i> Deel </button>
+                </div>
             </div>        
         </div>
     </div>
