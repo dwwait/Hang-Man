@@ -70,7 +70,7 @@
         <div class="modal-content"  style="border-radius:15px">
             <div class="modal-body">                
                 <div style="display: flex;">
-                    <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Stats</span>
+                    <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Jou Hang-Man Statistieke</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="color:#fff">&times;</span>
                     </button>
@@ -103,9 +103,9 @@
                 <div style="display: flex; margin-top:25px;justify-content:space-around">
                     <div>
                         <span>Volgende spel</span><br/>
-                        <countdown-timer [end]="dateTomorrow" style="margin-left:15px"></countdown-timer>
+                        <countdown-timer [end]='dateTomorrow' style="margin-left:20px"></countdown-timer>
                     </div>
-                    <button id="btnShare" class="btn btn-primary"><i class="fa fa-share-from-square mr-2"></i> Deel </button>
+                    <button id="btnShare" class="btn btn-primary" style="width:110px;"><i class="fa fa-share-from-square mr-1"></i> Deel </button>
                 </div>
             </div>        
         </div>
@@ -126,7 +126,7 @@
                 </div>    
                 <div style="display: flex; justify-content: center; margin-top: 20px ">
                     <button id="btnChooseDate" class="btn btn-primary mr-3"></button>
-                    <button id="btnChooseToday" class="btn btn-primary" >Kies Vandag</button>
+                    <button id="btnChooseToday" class="btn btn-primary">Kies Vandag</button>
                 </div>
             </div>
         </div>
@@ -135,16 +135,35 @@
 <div class="modal fade" id="modalInfo" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius:15px">
-            <div class="modal-body">                
+            <div class="modal-body">
                 <div style="display: flex;">
-                    <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Info</span>
+                    <span id="infoHeader" style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Hoe om te speel</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="color:#fff">&times;</span>
                     </button>
                 </div>
-                <div style="display: flex; justify-content:space-around;margin-top:20px">
-                   hello
-                </div>                
+                <div id="infotext" style="display: flex; justify-content:space-around;margin-top:20px">
+                    <p>
+                        Jy het 5 probeerslae om die woord/idioom te vind.
+                        Jy kan 'n wenk gebruik, wat 1 letter in die woord vir jou sal onthul. Let wel elke wenk kos 'n lewe.
+                        <br />
+                        Spasies in die sin word aangedui deur 'n donker grys blokkie.
+                        <br />
+                        <br />
+                        TIP: Probeer om vokale eerste te gebruik (A,E,I,U,O)
+                    </p>
+                </div>
+                <div id="erkenningtext" style="display: flex; justify-content:space-around;margin-top:20px; display:none">
+                    Hello from erkenning
+                </div>
+                <div id="settingstext" style="display: flex; justify-content:space-around;margin-top:20px; display:none">
+                    Hello from settings
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Info" data-placement="bottom" (click)="info('info')"><i class="fa fa-circle-info"></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Erkenning" data-placement="bottom" (click)="info('erkenning')"><i class="fa fa-people-group"></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-gear"></i></a>
             </div>
         </div>
     </div>

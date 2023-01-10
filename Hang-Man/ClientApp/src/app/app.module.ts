@@ -55,7 +55,11 @@ export class AppModule { }
 
 //TODO
 //info
-//Bind keys to keyboard - enter backspace dlt tab?
+//Bietjie animation vir as n regte letter gekies is en hy display in die word list
+//Bind keys to keyboard - enter backspace
+//Keyboard moet meer as een letter op n slag kan invoer
 //actual data
 //cookies
 //db
+//maybe n light mode + high contrast? maar fuckit dis mos nou moeite 
+//share jou stats

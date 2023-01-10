@@ -1,7 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { NgIf, NgClass } from '@angular/common';
-import { MatDateFormats } from '@angular/material';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Graph } from '../graph.model';
 
 
@@ -31,7 +28,8 @@ export class HomeComponent implements OnInit {
         }  
                
         document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();//Month is 0 index while rest is not
-        this.dateTomorrow = new Date(`${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getDate() +1}T00:00:00`);
+        
+        this.dateTomorrow = new Date(`${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${(today.getDate()+1)}`);
         this.Score = [
             { Value: 5, Color: '#475569', Size: '', Legend: '5' },
             { Value: 12, Color: '#475569', Size: '', Legend: '4' },
@@ -55,7 +53,7 @@ export class HomeComponent implements OnInit {
     selectedKey: number = null;
 
     keyboardPress(item: number) {
-        
+        //wil die verander dat jy meer as een letter op n slag kan kies        
         var button = document.getElementById(`btn${item+1}`);
         if (this.keyClicked[item] == false && this.selectedKey == null) {
             button.style.backgroundColor = '#1E293B';
@@ -119,8 +117,7 @@ export class HomeComponent implements OnInit {
 
                 var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
                 //play anitmation - for now its just the buttons
-                if (this.attemptsFailed < this.attemptsTotal) {
-                    
+                if (this.attemptsFailed < this.attemptsTotal) {                    
                     buttonTest.style.backgroundColor = 'red';
                     buttonTest.textContent = 'X';
                     this.attemptsFailed++;
@@ -134,5 +131,34 @@ export class HomeComponent implements OnInit {
             }
         }     
     }
-   
+
+    info(item: string) {
+        switch (item) {
+            case 'info':
+                document.getElementById(`infoHeader`).textContent = 'Hoe om te speel';
+                document.getElementById(`infotext`).style.display = 'inline';
+                document.getElementById(`erkenningtext`).style.display = 'none';
+                document.getElementById(`settingstext`).style.display = 'none';
+                break;
+            case 'erkenning':
+                document.getElementById(`infoHeader`).textContent = 'Erkenning';
+                document.getElementById(`erkenningtext`).style.display = 'inline';
+                document.getElementById(`infotext`).style.display = 'none';
+                document.getElementById(`settingstext`).style.display = 'none';
+                break;
+            case 'settings':
+                document.getElementById(`infoHeader`).textContent = 'Instellings';
+                document.getElementById(`settingstext`).style.display = 'inline';
+                document.getElementById(`infotext`).style.display = 'none';
+                document.getElementById(`erkenningtext`).style.display = 'none';
+
+                break;
+            default:
+                document.getElementById(`infoHeader`).textContent = 'Hoe om te speel';
+                document.getElementById(`infotext`).style.display = 'inline';
+                document.getElementById(`erkenningtext`).style.display = 'none';
+                document.getElementById(`settingstext`).style.display = 'none';
+                break;
+        }
+    }   
 }
