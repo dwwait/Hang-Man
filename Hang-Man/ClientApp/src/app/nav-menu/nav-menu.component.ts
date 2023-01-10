@@ -14,5 +14,12 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
+    }
+
+    InfoModal() {
+        document.getElementById(`infoHeader`).textContent = 'Hoe om te speel';
+        document.getElementById(`infotext`).style.display = 'inline';
+        document.getElementById(`erkenningtext`).style.display = 'none';
+        document.getElementById(`settingstext`).style.display = 'none';
+    }
 }
