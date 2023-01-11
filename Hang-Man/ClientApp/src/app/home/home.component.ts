@@ -66,6 +66,9 @@ export class HomeComponent implements OnInit {
     }
     
     submit() {
+        var buttonEnter = document.getElementById('enter');
+        buttonEnter.style.backgroundColor = '#334155';
+        buttonEnter.style.color = 'greenyellow';
         if (this.gameOver == false) {
             this.keyClicked.forEach((item,index) => {
                 if (item == true && this.gameOver == false) {
@@ -114,6 +117,11 @@ export class HomeComponent implements OnInit {
             });
             
         }
+        setTimeout(() => {
+            buttonEnter.style.backgroundColor = '#475569';
+            buttonEnter.style.color = '#fff';
+        }, 150);
+        
     }
     attemptsTotal: number = 4;//Beteken mag net 4 verkeurd kry en continue met game, anders op  5de verkeurde attempt is game over
     attemptsFailed: number = 0;
@@ -149,5 +157,96 @@ export class HomeComponent implements OnInit {
                 document.getElementById(`settingstext`).style.display = 'none';
                 break;
         }
-    }   
+    }    
 }
+
+document.addEventListener('keydown', function (event) { 
+    switch (event.code) {
+        case 'Enter':            
+            document.getElementById('enter').click();
+            break;
+        case 'NumpadEnter':
+            document.getElementById('enter').click();
+            break;
+        case 'KeyA':
+            document.getElementById('btn1').click();
+            break;
+        case 'KeyB':
+            document.getElementById('btn2').click();
+            break;
+        case 'KeyC':
+            document.getElementById('btn3').click();
+            break;
+        case 'KeyD':
+            document.getElementById('btn4').click();
+            break;
+        case 'KeyE':
+            document.getElementById('btn5').click();
+            break;
+        case 'KeyF':
+            document.getElementById('btn6').click();
+            break;
+        case 'KeyG':
+            document.getElementById('btn7').click();
+            break;
+        case 'KeyH':
+            document.getElementById('btn8').click();
+            break;
+        case 'KeyI':
+            document.getElementById('btn9').click();
+            break;
+        case 'KeyJ':
+            document.getElementById('btn10').click();
+            break;
+        case 'KeyK':
+            document.getElementById('btn11').click();
+            break;
+        case 'KeyL':
+            document.getElementById('btn12').click();
+            break;
+        case 'KeyM':
+            document.getElementById('btn13').click();
+            break;
+        case 'KeyN':
+            document.getElementById('btn14').click();
+            break;
+        case 'KeyO':
+            document.getElementById('btn15').click();
+            break;
+        case 'KeyP':
+            document.getElementById('btn16').click();
+            break;
+        case 'KeyQ':
+            document.getElementById('btn17').click();
+            break;
+        case 'KeyR':
+            document.getElementById('btn18').click();
+            break;
+        case 'KeyS':
+            document.getElementById('btn19').click();
+            break;
+        case 'KeyT':
+            document.getElementById('btn20').click();
+            break;
+        case 'KeyU':
+            document.getElementById('btn21').click();
+            break;
+        case 'KeyV':
+            document.getElementById('btn22').click();
+            break;
+        case 'KeyW':
+            document.getElementById('btn23').click();
+            break;
+        case 'KeyX':
+            document.getElementById('btn24').click();
+            break;
+        case 'KeyY':
+            document.getElementById('btn25').click();
+            break;
+        case 'KeyZ':    
+            document.getElementById('btn26').click();
+            break;
+        default:
+            break;
+    }
+});
