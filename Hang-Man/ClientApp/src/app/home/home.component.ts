@@ -50,87 +50,76 @@ export class HomeComponent implements OnInit {
         false, false, false, false, false, false
     ];
 
-    selectedKey: number = null;
-
     keyboardPress(item: number) {
         //wil die verander dat jy meer as een letter op n slag kan kies        
-        var button = document.getElementById(`btn${item+1}`);
-        if (this.keyClicked[item] == false && this.selectedKey == null) {
+        var button = document.getElementById(`btn${item + 1}`);
+        if (this.keyClicked[item] == false) {
             button.style.backgroundColor = '#1E293B';
             button.style.border = '1px solid #fff';
             this.keyClicked[item] = true;
-            this.selectedKey = item;
-        }
-        else if (this.keyClicked[item] == false && this.selectedKey != null) {
-            var oldButton = document.getElementById(`btn${this.selectedKey+1}`);
-            oldButton.style.backgroundColor = '#475569';
-            oldButton.style.border = '';
-            
-            this.keyClicked[this.selectedKey] = false;
-
-            button.style.backgroundColor = '#1E293B';
-            button.style.border = '1px solid #fff';            
-            this.keyClicked[item] = true;
-            this.selectedKey = item;
         }
         else if (this.keyClicked[item] == true) {
             button.style.backgroundColor = '#475569';
             button.style.border = '';
             this.keyClicked[item] = false;
-            this.selectedKey = null;
+        }    
+    }
+    
+    submit() {
+        if (this.gameOver == false) {
+            this.keyClicked.forEach((item,index) => {
+                if (item == true && this.gameOver == false) {
+                    var letter = this.alphabet[index];
+
+                    console.log("Letter->"+letter +" index- "+index);
+                    var button = document.getElementById(`btn${index + 1}`);
+                    if (this.wordOFtheDay.includes(letter)) {
+                        for (let i = 0; i < this.wordOFtheDay.length; i++) {
+                            if (this.wordOFtheDay.charAt(i) == letter) {
+                                document.getElementById(`btnAnswer${i}`).textContent = letter;
+                            }
+                        }
+                        //need to disable btn on keyboard and set selected btn to null;
+                        button.style.backgroundColor = '#1E293B';
+                        button.style.border = '';
+                        button.style.color = 'greenyellow';
+                        button.setAttribute('disabled', 'disabled');
+                        button.style.opacity = '1';
+                        this.keyClicked[index] = false;
+                    }
+                    else {
+                        //need to disable btn on keyboard and set selected btn to null;
+                        button.style.backgroundColor = '#1E293B';
+                        button.style.border = '';
+                        button.style.color = 'red';
+                        button.setAttribute('disabled', 'disabled');
+                        button.style.opacity = '1';
+                        this.keyClicked[index] = false;
+
+                        var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
+                        //play anitmation - for now its just the buttons
+                        if (this.attemptsFailed < this.attemptsTotal) {
+                            buttonTest.style.backgroundColor = 'red';
+                            buttonTest.textContent = 'X';
+                            this.attemptsFailed++;
+                        }
+                        else {//game over
+                            buttonTest.style.backgroundColor = 'red';
+                            buttonTest.textContent = 'X';
+                            document.getElementById(`response`).removeAttribute('hidden');
+                            this.gameOver = true;
+                        }
+                    }
+                }
+            });
+            
         }
     }
-
     attemptsTotal: number = 4;//Beteken mag net 4 verkeurd kry en continue met game, anders op  5de verkeurde attempt is game over
     attemptsFailed: number = 0;
 
     gameOver: boolean = false;
-    submit() {
-        if (this.selectedKey != null && this.gameOver == false) {
-            var letter = this.alphabet[this.selectedKey];
-            var button = document.getElementById(`btn${this.selectedKey + 1}`);
-            if (this.wordOFtheDay.includes(letter)) {
-                for (let i = 0; i < this.wordOFtheDay.length; i++) {
-                    if (this.wordOFtheDay.charAt(i) == letter) {
-                        document.getElementById(`btnAnswer${i}`).textContent = letter;
-                    }
-                }
-                //need to disable btn on keyboard and set selected btn to null;
-                button.style.backgroundColor = '#1E293B';
-                button.style.border = '';
-                button.style.color = 'greenyellow';                
-                button.setAttribute('disabled', 'disabled');
-                button.style.opacity = '1';
-                this.keyClicked[this.selectedKey] = false;
-                this.selectedKey = null;
-            }
-            else {
-                
-                //need to disable btn on keyboard and set selected btn to null;
-                button.style.backgroundColor = '#1E293B';
-                button.style.border = '';
-                button.style.color = 'red';
-                button.setAttribute('disabled', 'disabled');
-                button.style.opacity = '1';
-                this.keyClicked[this.selectedKey] = false;
-                this.selectedKey = null;
-
-                var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
-                //play anitmation - for now its just the buttons
-                if (this.attemptsFailed < this.attemptsTotal) {                    
-                    buttonTest.style.backgroundColor = 'red';
-                    buttonTest.textContent = 'X';
-                    this.attemptsFailed++;
-                }
-                else {//game over
-                    buttonTest.style.backgroundColor = 'red';
-                    buttonTest.textContent = 'X';      
-                    document.getElementById(`response`).removeAttribute('hidden');
-                    this.gameOver = true;
-                }
-            }
-        }     
-    }
+    
 
     info(item: string) {
         switch (item) {
