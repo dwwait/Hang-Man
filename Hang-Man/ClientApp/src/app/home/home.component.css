@@ -59,12 +59,9 @@
     padding-top:0.075rem;
 }
 
-    .btn-keyboard-special:hover{
-        background-color: #334155;
-        color: greenyellow;
-    }
     .btn-keyboard-special:hover {
         background-color: #334155;
+        color: greenyellow;
     }
 
 .btn-answers {
@@ -123,9 +120,8 @@
 }
 .fa {
     font-size: 20px;
-    color: #fff;
 }
     .fa:hover {
-        color: #fff;
         font-size: 22px;
     }
+
