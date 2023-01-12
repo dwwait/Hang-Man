@@ -46,8 +46,7 @@ export class HomeComponent implements OnInit {
 
     keyClicked: boolean[] = [false, false, false, false, false, false, false, false, false, false,
         false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false
-    ];
+        false, false, false, false, false, false];
 
     keyboardPress(item: number) {
         //wil die verander dat jy meer as een letter op n slag kan kies        
@@ -106,6 +105,9 @@ export class HomeComponent implements OnInit {
                             buttonTest.style.backgroundColor = 'red';
                             buttonTest.textContent = 'X';
                             this.attemptsFailed++;
+                            if (this.attemptsFailed == 4) {
+                                document.getElementById('btnhint').setAttribute('disabled', 'disabled');
+                            }
                         }
                         else {//game over
                             buttonTest.style.backgroundColor = 'red';
@@ -200,7 +202,9 @@ export class HomeComponent implements OnInit {
                 buttonTest.style.backgroundColor = 'red';
                 buttonTest.textContent = 'X';
                 this.attemptsFailed++;
-
+                if (this.attemptsFailed == 4) {
+                    document.getElementById('btnhint').setAttribute('disabled', 'disabled');
+                }
                 this.checkGameOver();
             }
             else {//game over
@@ -209,8 +213,6 @@ export class HomeComponent implements OnInit {
                 document.getElementById(`response`).removeAttribute('hidden');
                 this.gameOver = true;
             }
-
-
             this.gothintletter = false;
         }
         
