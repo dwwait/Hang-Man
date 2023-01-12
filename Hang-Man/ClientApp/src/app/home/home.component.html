@@ -39,7 +39,7 @@
             <button id="btn12" class="btn btn-keyboard" (click)='keyboardPress(11)'>L</button>
         </div>
         <div id="row3" class="keyboardRow">
-            <button id="btnhint" class="btn btn-keyboard-special"   data-toggle="modal" data-target="#modalHint"><i class="fa fa-question"></i></button>
+            <button id="btnhint" class="btn btn-keyboard-special" (click)='giveHint()'><i class="fa fa-question"></i></button>
             <button id="btn26" class="btn btn-keyboard" (click)='keyboardPress(25)'>Z</button>
             <button id="btn24" class="btn btn-keyboard" (click)='keyboardPress(23)'>X</button>
             <button id="btn3" class="btn btn-keyboard" (click)='keyboardPress(2)'>C</button>
@@ -49,20 +49,6 @@
             <button id="btn13" class="btn btn-keyboard" (click)='keyboardPress(12)'>M</button>            
             <button id="enter" class="btn btn-keyboard-special" style="width: auto;" (click)="submit()">Voer in</button>
         </div>      
-    </div>
-</div>
-<div class="modal fade" id="modalHint" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius:15px">         
-            <div class="modal-body">
-                <div style="display: flex;">
-                    <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Hint</span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color:#fff">&times;</span>
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <div class="modal fade" id="modalStats" aria-hidden="true">

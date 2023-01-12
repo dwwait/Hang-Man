@@ -42,8 +42,7 @@ export class HomeComponent implements OnInit {
 
     alphabet: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
         "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
-        "U", "V", "W", "X", "Y", "Z"
-    ];
+        "U", "V", "W", "X", "Y", "Z"];
 
     keyClicked: boolean[] = [false, false, false, false, false, false, false, false, false, false,
         false, false, false, false, false, false, false, false, false, false,
@@ -73,13 +72,11 @@ export class HomeComponent implements OnInit {
             this.keyClicked.forEach((item,index) => {
                 if (item == true && this.gameOver == false) {
                     var letter = this.alphabet[index];
-
-                    console.log("Letter->"+letter +" index- "+index);
                     var button = document.getElementById(`btn${index + 1}`);
                     if (this.wordOFtheDay.includes(letter)) {
                         for (let i = 0; i < this.wordOFtheDay.length; i++) {
                             if (this.wordOFtheDay.charAt(i) == letter) {
-                                document.getElementById(`btnAnswer${i}`).textContent = letter;
+                                document.getElementById(`btnAnswer${i}`).textContent = letter;  
                             }
                         }
                         //need to disable btn on keyboard and set selected btn to null;
@@ -158,6 +155,62 @@ export class HomeComponent implements OnInit {
                 break;
         }
     }    
+
+    gothintletter: boolean = false;
+    giveHint() {
+        //get open letter in word of the day thats not been selected, display it in list, then disable button
+        
+        if (this.gameOver != true) {
+            //if charAt in this.wordOFtheDay not a space and btnAnswers not filled in yet
+            var letter;
+            while (this.gothintletter != true) {
+                let randomIndex = Math.floor(Math.random() * (this.wordOFtheDay.length - 1) + 1); //get random index
+                console.log(this.wordOFtheDay.charAt(randomIndex));
+                console.log(document.getElementById(`btnAnswer${randomIndex}`).textContent);
+                console.log('next');
+                if (this.wordOFtheDay.charAt(randomIndex) != ' ' && document.getElementById(`btnAnswer${randomIndex}`).textContent == '') {
+                    letter = this.wordOFtheDay.charAt(randomIndex);
+                    this.gothintletter = true;
+                }
+            }
+            console.log('done, got the hint letter -- ' + letter);
+
+            var letterIndex = this.alphabet.indexOf(letter);
+
+            var button = document.getElementById(`btn${letterIndex + 1}`); //get index of letter
+            for (let i = 0; i < this.wordOFtheDay.length; i++) {
+                if (this.wordOFtheDay.charAt(i) == letter) {
+                    document.getElementById(`btnAnswer${i}`).textContent = letter;
+                }
+            }
+            //need to disable btn on keyboard and set selected btn to null;
+            button.style.backgroundColor = '#1E293B';
+            button.style.border = '';
+            button.style.color = 'greenyellow';
+            button.setAttribute('disabled', 'disabled');
+            button.style.opacity = '1';
+            this.keyClicked[letterIndex] = false; //make the selected letter false incase they pressed button, then hint,
+
+
+            var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
+            //play anitmation - for now its just the buttons
+            if (this.attemptsFailed < this.attemptsTotal) {
+                buttonTest.style.backgroundColor = 'red';
+                buttonTest.textContent = 'X';
+                this.attemptsFailed++;
+            }
+            else {//game over
+                buttonTest.style.backgroundColor = 'red';
+                buttonTest.textContent = 'X';
+                document.getElementById(`response`).removeAttribute('hidden');
+                this.gameOver = true;
+            }
+
+
+            this.gothintletter = false;
+        }
+        
+    }
 }
 
 document.addEventListener('keydown', function (event) { 
