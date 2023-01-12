@@ -56,8 +56,6 @@ export class AppModule { }
 //TODO
 //info
 //Bietjie animation vir as n regte letter gekies is en hy display in die word list
-//Bind keys to keyboard - enter backspace
-//Keyboard moet meer as een letter op n slag kan invoer
 //actual data
 //cookies
 //db
