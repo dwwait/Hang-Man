@@ -86,6 +86,10 @@ export class HomeComponent implements OnInit {
                         button.setAttribute('disabled', 'disabled');
                         button.style.opacity = '1';
                         this.keyClicked[index] = false;
+
+
+                        this.checkGameOver();                       
+
                     }
                     else {
                         //need to disable btn on keyboard and set selected btn to null;
@@ -165,9 +169,7 @@ export class HomeComponent implements OnInit {
             var letter;
             while (this.gothintletter != true) {
                 let randomIndex = Math.floor(Math.random() * (this.wordOFtheDay.length - 1) + 1); //get random index
-                console.log(this.wordOFtheDay.charAt(randomIndex));
-                console.log(document.getElementById(`btnAnswer${randomIndex}`).textContent);
-                console.log('next');
+                
                 if (this.wordOFtheDay.charAt(randomIndex) != ' ' && document.getElementById(`btnAnswer${randomIndex}`).textContent == '') {
                     letter = this.wordOFtheDay.charAt(randomIndex);
                     this.gothintletter = true;
@@ -198,6 +200,8 @@ export class HomeComponent implements OnInit {
                 buttonTest.style.backgroundColor = 'red';
                 buttonTest.textContent = 'X';
                 this.attemptsFailed++;
+
+                this.checkGameOver();
             }
             else {//game over
                 buttonTest.style.backgroundColor = 'red';
@@ -210,6 +214,21 @@ export class HomeComponent implements OnInit {
             this.gothintletter = false;
         }
         
+    }
+    checkGameOver() {
+        let gameWon: boolean = true;
+        for (let i = 0; i < this.wordOFtheDay.length; i++) {
+            if (document.getElementById(`btnAnswer${i}`).textContent == '' && this.wordOFtheDay.charAt(i) != ' ') {
+                gameWon = false;
+            }
+        }
+        
+        if (gameWon == true) {
+            this.gameOver = true;
+            document.getElementById(`response`).style.color = 'greenyellow';
+            document.getElementById(`response`).textContent = 'YOU WON';
+            document.getElementById(`response`).removeAttribute('hidden');
+        }
     }
 }
 
