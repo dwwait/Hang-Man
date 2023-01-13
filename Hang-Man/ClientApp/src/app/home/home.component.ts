@@ -17,16 +17,15 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.wordOFtheDay = this.wordOFtheDay.toUpperCase();       
         const today = new Date();
-        
-        var styleString = 'font-size: 1.5vh;background-color: #475569;color: #fff;height: 2.25rem;width: 1.25rem;border: 1.5px;border-radius: 0.33rem;margin: 0.15rem;cursor: default; ';
+                
         for (let i = 0; i < this.wordOFtheDay.length; i++)
         {
             if (this.wordOFtheDay.charAt(i) == " ")
-                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" value="" style="${styleString} background-color: #25303E;"disabled></button>`);
-            else 
-                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" value="" style="${styleString}" disabled></button>`);
+                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" style="background-color: #25303E;"disabled></button>`);
+            else
+                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers"  disabled></button>`);
         }  
-               
+        
         document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();//Month is 0 index while rest is not
         
         this.dateTomorrow = new Date(`${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${(today.getDate()+1)}`);
@@ -46,8 +45,7 @@ export class HomeComponent implements OnInit {
 
     keyClicked: boolean[] = [false, false, false, false, false, false, false, false, false, false,
         false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false
-    ];
+        false, false, false, false, false, false];
 
     keyboardPress(item: number) {
         //wil die verander dat jy meer as een letter op n slag kan kies        
@@ -76,7 +74,7 @@ export class HomeComponent implements OnInit {
                     if (this.wordOFtheDay.includes(letter)) {
                         for (let i = 0; i < this.wordOFtheDay.length; i++) {
                             if (this.wordOFtheDay.charAt(i) == letter) {
-                                document.getElementById(`btnAnswer${i}`).textContent = letter;  
+                                document.getElementById(`btnAnswer${i}`).textContent = letter;
                             }
                         }
                         //need to disable btn on keyboard and set selected btn to null;
@@ -87,9 +85,7 @@ export class HomeComponent implements OnInit {
                         button.style.opacity = '1';
                         this.keyClicked[index] = false;
 
-
-                        this.checkGameOver();                       
-
+                        this.checkGameOver();
                     }
                     else {
                         //need to disable btn on keyboard and set selected btn to null;
@@ -106,6 +102,9 @@ export class HomeComponent implements OnInit {
                             buttonTest.style.backgroundColor = 'red';
                             buttonTest.textContent = 'X';
                             this.attemptsFailed++;
+                            if (this.attemptsFailed == 4) {
+                                document.getElementById('btnhint').setAttribute('disabled', 'disabled');
+                            }
                         }
                         else {//game over
                             buttonTest.style.backgroundColor = 'red';
@@ -149,13 +148,8 @@ export class HomeComponent implements OnInit {
                 document.getElementById(`settingstext`).style.display = 'inline';
                 document.getElementById(`infotext`).style.display = 'none';
                 document.getElementById(`erkenningtext`).style.display = 'none';
-
                 break;
             default:
-                document.getElementById(`infoHeader`).textContent = 'Hoe om te speel';
-                document.getElementById(`infotext`).style.display = 'inline';
-                document.getElementById(`erkenningtext`).style.display = 'none';
-                document.getElementById(`settingstext`).style.display = 'none';
                 break;
         }
     }    
@@ -182,7 +176,7 @@ export class HomeComponent implements OnInit {
             var button = document.getElementById(`btn${letterIndex + 1}`); //get index of letter
             for (let i = 0; i < this.wordOFtheDay.length; i++) {
                 if (this.wordOFtheDay.charAt(i) == letter) {
-                    document.getElementById(`btnAnswer${i}`).textContent = letter;
+                    document.getElementById(`btnAnswer${i}`).textContent = letter;                    
                 }
             }
             //need to disable btn on keyboard and set selected btn to null;
@@ -200,7 +194,9 @@ export class HomeComponent implements OnInit {
                 buttonTest.style.backgroundColor = 'red';
                 buttonTest.textContent = 'X';
                 this.attemptsFailed++;
-
+                if (this.attemptsFailed == 4) {
+                    document.getElementById('btnhint').setAttribute('disabled', 'disabled');
+                }
                 this.checkGameOver();
             }
             else {//game over
@@ -209,8 +205,6 @@ export class HomeComponent implements OnInit {
                 document.getElementById(`response`).removeAttribute('hidden');
                 this.gameOver = true;
             }
-
-
             this.gothintletter = false;
         }
         

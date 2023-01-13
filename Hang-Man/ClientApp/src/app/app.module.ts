@@ -54,10 +54,9 @@ export class AppModule { }
 
 
 //TODO
-//info
+//info- moet nog darkmode/lightmode toggle insit, en erkennings
 //Bietjie animation vir as n regte letter gekies is en hy display in die word list
+//share jou stats -- copy to clipboard
 //actual data
 //cookies
 //db
-//maybe n light mode + high contrast? maar fuckit dis mos nou moeite 
-//share jou stats

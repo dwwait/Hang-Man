@@ -39,7 +39,7 @@
             <button id="btn12" class="btn btn-keyboard" (click)='keyboardPress(11)'>L</button>
         </div>
         <div id="row3" class="keyboardRow">
-            <button id="btnhint" class="btn btn-keyboard-special" (click)='giveHint()'><i class="fa fa-question"></i></button>
+            <button id="btnhint" class="btn btn-keyboard-special" (click)='giveHint()'  data-toggle="tooltip" title="Ontou 'n wenk kos n lewe!" data-placement="top" ><i class="fa fa-question"></i></button>
             <button id="btn26" class="btn btn-keyboard" (click)='keyboardPress(25)'>Z</button>
             <button id="btn24" class="btn btn-keyboard" (click)='keyboardPress(23)'>X</button>
             <button id="btn3" class="btn btn-keyboard" (click)='keyboardPress(2)'>C</button>
@@ -85,7 +85,6 @@
                         <app-bar-chart [List]='Score'></app-bar-chart>
                     </div>
                 </div>
-                <!--<div class="line"></div>-->
                 <div style="display: flex; margin-top:25px;justify-content:space-around">
                     <div>
                         <span>Volgende spel</span><br/>
@@ -133,7 +132,7 @@
                         Raai watter letters in die woord of frase of idioom is deur 'n letter (of letters as jy dapper is) te kies. As die letter korrek is,
                         sal dit in die blokkies verskyn. As die letter verkeerd is, sal dit 'n deel van 'n strydperk vertoon.<br />
                         Jy het slegs <span class="text-danger">5</span> verkeurde raai skote voordat die strydperk voltooi word.
-                        Die doel van die spel is om die woord of frase te raden voordat die strydperk voltooi is.
+                        Die doel van die spel is om die woord of frase te raai voordat die strydperk voltooi is.
                         <br />
                         <br />
                         Jy kan 'n wenk gebruik wat 1 letter in die woord vir jou sal onthul, maar let wel die prys vir n wenk is 'n lewe!

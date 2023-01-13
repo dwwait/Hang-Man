@@ -13,7 +13,11 @@ code {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #0F172A;
+}
 
 @media only screen and (max-width: 600px) {
     body {
@@ -166,4 +170,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .spinner-message {
     text-align: center;
+}
+
+
+.btn-answers {
+    position: relative;
+    font-size: 1.5vh;
+    background-color: #475569;
+    color: #fff;
+    height: 2.25rem;
+    width: 1.25rem;
+    border: 1.5px;
+    border-radius: 0.33rem;
+    margin: 0.15rem;
+    cursor: default;
 }
