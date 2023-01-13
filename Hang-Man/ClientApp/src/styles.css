@@ -171,3 +171,17 @@ body {
 .spinner-message {
     text-align: center;
 }
+
+
+.btn-answers {
+    position: relative;
+    font-size: 1.5vh;
+    background-color: #475569;
+    color: #fff;
+    height: 2.25rem;
+    width: 1.25rem;
+    border: 1.5px;
+    border-radius: 0.33rem;
+    margin: 0.15rem;
+    cursor: default;
+}
