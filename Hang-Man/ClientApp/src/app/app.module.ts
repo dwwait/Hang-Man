@@ -56,6 +56,8 @@ export class AppModule { }
 //TODO
 //info- moet nog darkmode/lightmode toggle insit, en erkennings
 //Bietjie animation vir as n regte letter gekies is en hy display in die word list
+//game over moet die stats modal oop maak, met jou score, en weet nie hoe die data lyk nie maar maybe die betekenes van die idoom
+//en wat as jy we oopmaak maar jy het die game kla gespeel, moet hy oop maak met die stats modal of nah?z
 //share jou stats -- copy to clipboard
 //actual data
 //cookies

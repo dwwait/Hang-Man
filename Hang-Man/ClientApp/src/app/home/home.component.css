@@ -5,6 +5,9 @@
     height: 92vh;
     width: 100%;
 }
+    #home.light {
+        background-color: #fff;        
+    }
 
 #keyboard {
     width: 98%;
@@ -46,7 +49,15 @@
     .btn-keyboard:hover {
         background-color: #334155;
     }
-    
+
+    .btn-keyboard.light {
+        background-color: #E2E8F0;
+        color: #0F172A;
+    }
+        .btn-keyboard.light:hover {
+            background-color: #cbd5e1;
+        }
+
 .btn-keyboard-special {
     font-size: 2.25vh;
     background-color: #475569;
@@ -55,26 +66,32 @@
     width: auto;
     border: 1.5px;
     border-radius: 0.33rem;
-    margin: 0.15rem;   
-    padding-top:0.075rem;
+    margin: 0.15rem;
+    padding-top: 0.075rem;
 }
 
     .btn-keyboard-special:hover {
         background-color: #334155;
-        color: greenyellow;
+    }
+    .btn-keyboard-special.light {
+        background-color: #E2E8F0;
+        color: #0F172A;
+    }
+    .btn-keyboard-special.light:hover {
+        background-color: #cbd5e1 !important;
     }
 
-.btn-answers {
-    font-size: 1.5vh;
-    background-color: #475569;
-    color: #fff;
-    height: 3.5rem;
-    width: 2.75rem;
-    border: 1.5px;
-    border-radius: 0.33rem;
-    margin: 0.15rem;
-    cursor: default;
-}
+    .btn-answers {
+        font-size: 1.5vh;
+        background-color: #475569;
+        color: #fff;
+        height: 3.5rem;
+        width: 2.75rem;
+        border: 1.5px;
+        border-radius: 0.33rem;
+        margin: 0.15rem;
+        cursor: default;
+    }
     .btn-answers:hover {
         cursor: default;
     }
@@ -99,13 +116,18 @@
 .modal-content {
     background-color: #0F172A;
     color: #fff;
+    border-radius: 15px;
 }
+    .modal-content.light {
+        background-color: #fff;
+        color: #0F172A;
+    }
 
-.stats {
-    display: flex;
-    flex-direction: column;    
-    text-align:center;
-}
+    .stats {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 
 .modal-body {
     display: flex;
@@ -120,8 +142,20 @@
 }
 .fa {
     font-size: 20px;
+    color: #fff;
 }
     .fa:hover {
         font-size: 22px;
     }
 
+.entimes {
+    color: #fff;
+}
+    .entimes.light {
+        color: #0F172A;
+    }
+
+i.fa.light {
+    background-color: transparent;
+    color: #0F172A;
+}

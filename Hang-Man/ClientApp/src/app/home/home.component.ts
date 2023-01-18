@@ -9,6 +9,9 @@ import { Graph } from '../graph.model';
 })
 
 export class HomeComponent implements OnInit {
+
+    theme: string = "light";//defualt is dark, so make it empty to revert to dark-- 'light'
+
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
     dateTomorrow: Date;
@@ -20,10 +23,19 @@ export class HomeComponent implements OnInit {
                 
         for (let i = 0; i < this.wordOFtheDay.length; i++)
         {
-            if (this.wordOFtheDay.charAt(i) == " ")
-                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" style="background-color: #25303E;"disabled></button>`);
-            else
-                document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers"  disabled></button>`);
+            if (this.wordOFtheDay.charAt(i) == " ") {
+                if(this.theme != 'light')
+                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers" style="background-color: #25303E;"disabled></button>`);
+                else
+                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers light" style="background-color: #afb9c4;"disabled></button>`);
+            }
+            else {
+                if (this.theme != 'light')
+                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers"  disabled></button>`);
+                else
+                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers light"  disabled></button>`);
+
+            }
         }  
         
         document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();//Month is 0 index while rest is not
@@ -51,21 +63,42 @@ export class HomeComponent implements OnInit {
         //wil die verander dat jy meer as een letter op n slag kan kies        
         var button = document.getElementById(`btn${item + 1}`);
         if (this.keyClicked[item] == false) {
-            button.style.backgroundColor = '#1E293B';
-            button.style.border = '1px solid #fff';
+            if (this.theme != 'light') {
+                button.style.backgroundColor = '#1E293B';
+                button.style.border = '1px solid #fff';
+            }
+            else {
+                button.style.backgroundColor = '#afb9c4';
+                button.style.border = '1px solid #000000';
+            }
+            
             this.keyClicked[item] = true;
         }
         else if (this.keyClicked[item] == true) {
-            button.style.backgroundColor = '#475569';
-            button.style.border = '';
+            if (this.theme != 'light') {
+                button.style.backgroundColor = '#475569';
+                button.style.border = '';
+            }
+            else {
+                button.style.backgroundColor = '#E2E8F0';
+                button.style.border = '';
+            }            
             this.keyClicked[item] = false;
         }    
     }
     
     submit() {
         var buttonEnter = document.getElementById('enter');
-        buttonEnter.style.backgroundColor = '#334155';
-        buttonEnter.style.color = 'greenyellow';
+
+        if (this.theme != 'light') {
+            buttonEnter.style.backgroundColor = '#334155';
+            buttonEnter.style.color = 'greenyellow';
+        }
+        else {
+            buttonEnter.style.backgroundColor = '#afb9c4';
+            buttonEnter.style.color = '#0a0ed7';
+        }
+        
         if (this.gameOver == false) {
             this.keyClicked.forEach((item,index) => {
                 if (item == true && this.gameOver == false) {
@@ -78,22 +111,41 @@ export class HomeComponent implements OnInit {
                             }
                         }
                         //need to disable btn on keyboard and set selected btn to null;
-                        button.style.backgroundColor = '#1E293B';
-                        button.style.border = '';
-                        button.style.color = 'greenyellow';
-                        button.setAttribute('disabled', 'disabled');
-                        button.style.opacity = '1';
+                        if (this.theme != 'light') {
+                            button.style.backgroundColor = '#1E293B';
+                            button.style.border = '';
+                            button.style.color = 'greenyellow';
+                            button.setAttribute('disabled', 'disabled');
+                            button.style.opacity = '1';
+                        }
+                        else {
+                            button.style.backgroundColor = '#8d98a3';
+                            button.style.border = '';
+                            button.style.color = 'greenyellow';
+                            button.setAttribute('disabled', 'disabled');
+                            button.style.opacity = '1';
+                        }
                         this.keyClicked[index] = false;
 
                         this.checkGameOver();
                     }
                     else {
                         //need to disable btn on keyboard and set selected btn to null;
-                        button.style.backgroundColor = '#1E293B';
-                        button.style.border = '';
-                        button.style.color = 'red';
-                        button.setAttribute('disabled', 'disabled');
-                        button.style.opacity = '1';
+                        if (this.theme != 'light') {
+                            button.style.backgroundColor = '#1E293B';
+                            button.style.border = '';
+                            button.style.color = 'red';
+                            button.setAttribute('disabled', 'disabled');
+                            button.style.opacity = '1';
+                        }
+                        else {
+                            button.style.backgroundColor = '#8d98a3';
+                            button.style.border = '';
+                            button.style.color = 'red';
+                            button.setAttribute('disabled', 'disabled');
+                            button.style.opacity = '1';
+                        }
+                        
                         this.keyClicked[index] = false;
 
                         var buttonTest = document.getElementById(`wrong${this.attemptsFailed}`);
@@ -118,8 +170,14 @@ export class HomeComponent implements OnInit {
             
         }
         setTimeout(() => {
-            buttonEnter.style.backgroundColor = '#475569';
-            buttonEnter.style.color = '#fff';
+            if (this.theme != 'light') {
+                buttonEnter.style.backgroundColor = '#475569';
+                buttonEnter.style.color = '#fff';
+            }
+            else {
+                buttonEnter.style.backgroundColor = '#E2E8F0';
+                buttonEnter.style.color = '#000000';
+            }
         }, 150);
         
     }
@@ -169,8 +227,6 @@ export class HomeComponent implements OnInit {
                     this.gothintletter = true;
                 }
             }
-            console.log('done, got the hint letter -- ' + letter);
-
             var letterIndex = this.alphabet.indexOf(letter);
 
             var button = document.getElementById(`btn${letterIndex + 1}`); //get index of letter
@@ -180,11 +236,21 @@ export class HomeComponent implements OnInit {
                 }
             }
             //need to disable btn on keyboard and set selected btn to null;
-            button.style.backgroundColor = '#1E293B';
-            button.style.border = '';
-            button.style.color = 'greenyellow';
-            button.setAttribute('disabled', 'disabled');
-            button.style.opacity = '1';
+            if (this.theme != 'light') {
+                button.style.backgroundColor = '#1E293B';
+                button.style.border = '';
+                button.style.color = 'greenyellow';
+                button.setAttribute('disabled', 'disabled');
+                button.style.opacity = '1';
+            }
+            else {
+                button.style.backgroundColor = '#8d98a3';
+                button.style.border = '';
+                button.style.color = 'greenyellow';
+                button.setAttribute('disabled', 'disabled');
+                button.style.opacity = '1';
+            }
+         
             this.keyClicked[letterIndex] = false; //make the selected letter false incase they pressed button, then hint,
 
 
@@ -228,9 +294,7 @@ export class HomeComponent implements OnInit {
 
 document.addEventListener('keydown', function (event) { 
     switch (event.code) {
-        case 'Enter':            
-            document.getElementById('enter').click();
-            break;
+        case 'Enter':     
         case 'NumpadEnter':
             document.getElementById('enter').click();
             break;
