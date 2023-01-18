@@ -1,4 +1,4 @@
-<div id="home">
+<div id="home" [ngClass]='theme'>
     <div class="top-container" >       
         <!--Moet hierdie hele animation div vervang eventually met actual animations-->
         <div id="animations" style="margin-top: auto; margin-bottom: auto; display: flex; flex-direction: column;"> 
@@ -14,51 +14,51 @@
         <div id="lettersBtns">     
         </div>        
     </div>
-    <div id="keyboard" >
-        <div id="row1" class="keyboardRow">
-            <button id="btn17" class="btn btn-keyboard" (click)='keyboardPress(16)'>Q</button>
-            <button id="btn23" class="btn btn-keyboard" (click)='keyboardPress(22)'>W</button>
-            <button id="btn5" class="btn btn-keyboard" (click)='keyboardPress(4)'>E</button>
-            <button id="btn18" class="btn btn-keyboard" (click)='keyboardPress(17)'>R</button>
-            <button id="btn20" class="btn btn-keyboard" (click)='keyboardPress(19)'>T</button>
-            <button id="btn25" class="btn btn-keyboard" (click)='keyboardPress(24)'>Y</button>
-            <button id="btn21" class="btn btn-keyboard" (click)='keyboardPress(20)'>U</button>
-            <button id="btn9" class="btn btn-keyboard" (click)='keyboardPress(8)'>I</button>
-            <button id="btn15" class="btn btn-keyboard" (click)='keyboardPress(14)'>O</button>
-            <button id="btn16" class="btn btn-keyboard" (click)='keyboardPress(15)'>P</button>
+    <div id="keyboard" [ngClass]='theme'>
+        <div id="row1" class="keyboardRow" [ngClass]='theme'>
+            <button id="btn17" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(16)'>Q</button>
+            <button id="btn23" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(22)'>W</button>
+            <button id="btn5" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(4)'>E</button>
+            <button id="btn18" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(17)'>R</button>
+            <button id="btn20" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(19)'>T</button>
+            <button id="btn25" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(24)'>Y</button>
+            <button id="btn21" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(20)'>U</button>
+            <button id="btn9" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(8)'>I</button>
+            <button id="btn15" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(14)'>O</button>
+            <button id="btn16" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(15)'>P</button>
         </div>
         <div id="row2" class="keyboardRow" style=" margin-left:10px;margin-right:10px;" >
-            <button id="btn1" class="btn btn-keyboard" (click)='keyboardPress(0)'>A</button>
-            <button id="btn19" class="btn btn-keyboard" (click)='keyboardPress(18)'>S</button>
-            <button id="btn4" class="btn btn-keyboard" (click)='keyboardPress(3)'>D</button>
-            <button id="btn6" class="btn btn-keyboard" (click)='keyboardPress(5)'>F</button>
-            <button id="btn7" class="btn btn-keyboard" (click)='keyboardPress(6)'>G</button>
-            <button id="btn8" class="btn btn-keyboard" (click)='keyboardPress(7)'>H</button>
-            <button id="btn10" class="btn btn-keyboard" (click)='keyboardPress(9)'>J</button>
-            <button id="btn11" class="btn btn-keyboard" (click)='keyboardPress(10)'>K</button>
-            <button id="btn12" class="btn btn-keyboard" (click)='keyboardPress(11)'>L</button>
+            <button id="btn1" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(0)'>A</button>
+            <button id="btn19" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(18)'>S</button>
+            <button id="btn4" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(3)'>D</button>
+            <button id="btn6" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(5)'>F</button>
+            <button id="btn7" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(6)'>G</button>
+            <button id="btn8" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(7)'>H</button>
+            <button id="btn10" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(9)'>J</button>
+            <button id="btn11" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(10)'>K</button>
+            <button id="btn12" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(11)'>L</button>
         </div>
         <div id="row3" class="keyboardRow">
-            <button id="btnhint" class="btn btn-keyboard-special" (click)='giveHint()'  data-toggle="tooltip" title="Ontou 'n wenk kos n lewe!" data-placement="top" ><i class="fa fa-question"></i></button>
-            <button id="btn26" class="btn btn-keyboard" (click)='keyboardPress(25)'>Z</button>
-            <button id="btn24" class="btn btn-keyboard" (click)='keyboardPress(23)'>X</button>
-            <button id="btn3" class="btn btn-keyboard" (click)='keyboardPress(2)'>C</button>
-            <button id="btn22" class="btn btn-keyboard" (click)='keyboardPress(21)'>V</button>
-            <button id="btn2" class="btn btn-keyboard" (click)='keyboardPress(1)'>B</button>
-            <button id="btn14" class="btn btn-keyboard" (click)='keyboardPress(13)'>N</button>
-            <button id="btn13" class="btn btn-keyboard" (click)='keyboardPress(12)'>M</button>            
-            <button id="enter" class="btn btn-keyboard-special" style="width: auto;" (click)="submit()">Voer in</button>
+            <button id="btnhint" class="btn btn-keyboard-special" [ngClass]='theme' (click)='giveHint()'  data-toggle="tooltip" title="Ontou 'n wenk kos n lewe!" data-placement="top" ><i class="fa fa-question" [ngClass]='theme'></i></button>
+            <button id="btn26" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(25)'>Z</button>
+            <button id="btn24" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(23)'>X</button>
+            <button id="btn3" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(2)'>C</button>
+            <button id="btn22" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(21)'>V</button>
+            <button id="btn2" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(1)'>B</button>
+            <button id="btn14" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(13)'>N</button>
+            <button id="btn13" class="btn btn-keyboard" [ngClass]='theme' (click)='keyboardPress(12)'>M</button>            
+            <button id="enter" class="btn btn-keyboard-special" [ngClass]='theme' style="width: auto;" (click)="submit()">Voer in</button>
         </div>      
     </div>
 </div>
 <div class="modal fade" id="modalStats" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"  style="border-radius:15px">
+        <div class="modal-content" [ngClass]='theme'>
             <div class="modal-body">                
                 <div style="display: flex;">
                     <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Jou Hang-Man Statistieke</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color:#fff">&times;</span>
+                        <span aria-hidden="true" class="entimes" [ngClass]='theme'>&times;</span>
                     </button>
                 </div>
                 <div style="display: flex; justify-content:space-around;margin-top:20px">
@@ -98,12 +98,12 @@
 </div>
 <div class="modal fade" id="modalCalender" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius:15px">
+        <div class="modal-content" [ngClass]='theme'>
             <div class="modal-body">                
                 <div style="display: flex;">
                     <span style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Speel gister s'n</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color:#fff">&times;</span>
+                        <span aria-hidden="true" class="entimes" [ngClass]='theme'>&times;</span>
                     </button>
                 </div>
                 <div style="display: flex; justify-content:center; margin-top:20px;">
@@ -119,12 +119,12 @@
 </div>
 <div class="modal fade" id="modalInfo" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius:15px">
+        <div class="modal-content" [ngClass]='theme'>
             <div class="modal-body">
                 <div style="display: flex;">
                     <span id="infoHeader" style="font-size: 3.25vh; margin-left: auto; margin-right: auto; ">Hoe om te speel</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color:#fff">&times;</span>
+                        <span aria-hidden="true" class="entimes" [ngClass]='theme'>&times;</span>
                     </button>
                 </div>
                 <div id="infotext" style="display: flex; justify-content:space-around;margin-top:20px">
@@ -151,10 +151,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Info" data-placement="bottom" (click)="info('info')"><i class="fa fa-circle-info" style="color:white"></i></a>
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Erkenning" data-placement="bottom" (click)="info('erkenning')"><i class="fa fa-people-group" style="color:white"></i></a>
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-sun" style="color:white"></i></a>
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-moon" style="color:white"></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Info" data-placement="bottom" (click)="info('info')"><i class="fa fa-circle-info" [ngClass]='theme'></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Erkenning" data-placement="bottom" (click)="info('erkenning')"><i class="fa fa-people-group" [ngClass]='theme'></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-sun" [ngClass]='theme'></i></a>
+                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-moon" [ngClass]='theme'></i></a>
             </div>
         </div>
     </div>

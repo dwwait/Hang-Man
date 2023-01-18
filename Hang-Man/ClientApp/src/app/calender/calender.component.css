@@ -46,3 +46,9 @@
 ::ng-deep .mat-calendar-arrow {
     border-top-color: rgba(225,225,225,1);
 }
+.inline-calendar-card.light {
+    width: 250px;
+    background-color: darkgrey;
+    border-radius: 15px;
+    padding-top: 0;
+}

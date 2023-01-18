@@ -13,6 +13,9 @@ export class CalenderComponent {
     dateSelected: Date = null;
     dateSelectedString: string = null;
     today: Date;
+
+    theme: string = "light";//defualt is dark, so make it empty to revert to dark-- 'light'
+
     ngOnInit() {  
         this.today = new Date();
         this.selected = this.today;

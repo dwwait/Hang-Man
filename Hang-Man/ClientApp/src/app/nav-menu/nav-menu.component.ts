@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
   isExpanded = false;
 
+    theme = 'light';
   collapse() {
     this.isExpanded = false;
   }
