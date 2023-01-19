@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { DataService } from '../data.service';
 import { Graph } from '../graph.model';
-
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,9 @@ import { Graph } from '../graph.model';
 })
 
 export class HomeComponent implements OnInit {
+    constructor(private dataService: DataService) { }
 
-    theme: string = "light";//defualt is dark, so make it empty to revert to dark-- 'light'
+    public theme: string = this.dataService.theme;//default is dark, so make it empty to revert to dark-- 'light'
 
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
                 if (this.theme != 'light')
                     document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers"  disabled></button>`);
                 else
-                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers light"  disabled></button>`);
+                    document.getElementById("lettersBtns").insertAdjacentHTML('beforeend', `<button id="btnAnswer${i}" class="btn-answers light" disabled></button>`);
 
             }
         }  

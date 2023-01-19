@@ -17,6 +17,7 @@ import { MatCardModule, MatInputModule,  MatNativeDateModule } from '@angular/ma
 import { CalenderComponent } from './calender/calender.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { CountdownTimerModule } from 'angular-countdown-timer';
+import { DataService } from './data.service';
 @NgModule({
     declarations: [    
     AppComponent,
@@ -25,7 +26,7 @@ import { CountdownTimerModule } from 'angular-countdown-timer';
     CounterComponent,
     FetchDataComponent,
     CalenderComponent,
-    BarChartComponent
+        BarChartComponent
     ],
     imports: [
      
@@ -43,10 +44,12 @@ import { CountdownTimerModule } from 'angular-countdown-timer';
     MatCardModule,
     MatInputModule,
     MatNativeDateModule,
-    CountdownTimerModule
+    CountdownTimerModule,
+    
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+      { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+      DataService
   ],
   bootstrap: [AppComponent]
 })

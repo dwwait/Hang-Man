@@ -153,8 +153,8 @@
             <div class="modal-footer">
                 <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Info" data-placement="bottom" (click)="info('info')"><i class="fa fa-circle-info" [ngClass]='theme'></i></a>
                 <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Erkenning" data-placement="bottom" (click)="info('erkenning')"><i class="fa fa-people-group" [ngClass]='theme'></i></a>
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-sun" [ngClass]='theme'></i></a>
-                <a href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Instellings" data-placement="bottom" (click)="info('settings')"><i class="fa fa-moon" [ngClass]='theme'></i></a>
+                <a *ngIf="theme != 'light'" href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Ligte uitleg" data-placement="bottom" (click)="toggleTheme()"><i class="fa fa-sun" [ngClass]='theme'></i></a>
+                <a *ngIf="theme == 'light'" href="#" type="button" class="mr-3 p-0" data-toggle="tooltip" title="Donker uitleg" data-placement="bottom" (click)="toggleTheme()"><i class="fa fa-moon" [ngClass]='theme'></i></a>
             </div>
         </div>
     </div>

@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+    selector: 'app-nav-menu',
+    templateUrl: './nav-menu.component.html',
+    styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
 
-    theme = 'light';
-  collapse() {
-    this.isExpanded = false;
-  }
+    constructor(private dataService: DataService) { }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+    theme = this.dataService.theme;
+
+    isExpanded = false;
+
+    collapse() {
+        this.isExpanded = false;
+    }
+
+    toggle() {
+        this.isExpanded = !this.isExpanded;
     }
 
     InfoModal() {
