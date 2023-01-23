@@ -11,7 +11,7 @@ import { Graph } from '../graph.model';
 export class HomeComponent implements OnInit {
     constructor(private dataService: DataService) { }
 
-    public theme: string = this.dataService.theme;//default is dark, so make it empty to revert to dark-- 'light'
+    theme: string = this.dataService.getUsersTheme();//default is dark, so make it empty to revert to dark-- 'light'
 
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";

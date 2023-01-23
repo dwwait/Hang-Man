@@ -10,7 +10,7 @@ export class NavMenuComponent {
 
     constructor(private dataService: DataService) { }
 
-    theme = this.dataService.theme;
+    theme: string = this.dataService.getUsersTheme();
 
     isExpanded = false;
 
