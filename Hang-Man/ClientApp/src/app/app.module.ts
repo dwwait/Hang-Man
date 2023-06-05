@@ -18,7 +18,7 @@ import { MatInputModule} from '@angular/material/input';
 // import { MatNativeDateModule } from '@angular/material/datepicker';
 import { CalenderComponent } from './calender/calender.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
-import { CountdownTimerModule } from 'angular-countdown-timer';
+// import { CountdownTimerModule } from 'angular-countdown-timer';
 import { DataService } from './data.service';
 import { CommonModule } from '@angular/common';
 import { NativeDateModule } from '@angular/material/core';
