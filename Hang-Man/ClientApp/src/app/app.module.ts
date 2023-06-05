@@ -43,9 +43,9 @@ import { CommonModule } from '@angular/common';
     ]),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatCardModule,
-    MatInputModule,
-    MatNativeDateModule,
+    // MatCardModule,
+    // MatInputModule,
+    // MatNativeDateModule,
     CountdownTimerModule,
     
   ],
