@@ -13,12 +13,15 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatCardModule, MatInputModule,  MatNativeDateModule } from '@angular/material';
+import { MatCardModule} from '@angular/material/card';
+import { MatInputModule} from '@angular/material/input';
+// import { MatNativeDateModule } from '@angular/material/datepicker';
 import { CalenderComponent } from './calender/calender.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { CountdownTimerModule } from 'angular-countdown-timer';
 import { DataService } from './data.service';
 import { CommonModule } from '@angular/common';
+import { NativeDateModule } from '@angular/material/core';
 
 @NgModule({
     declarations: [    
@@ -43,10 +46,11 @@ import { CommonModule } from '@angular/common';
     ]),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    // MatCardModule,
-    // MatInputModule,
-    // MatNativeDateModule,
-    CountdownTimerModule,
+    // CountdownTimerModule,
+    MatCardModule,
+    MatInputModule,
+    NativeDateModule,
+    
     
   ],
   providers: [
