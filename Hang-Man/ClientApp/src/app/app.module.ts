@@ -13,13 +13,13 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatCardModule } from '@angular/material/card';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
+import { MatCardModule, MatInputModule,  MatNativeDateModule } from '@angular/material';
 import { CalenderComponent } from './calender/calender.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { CountdownTimerModule } from 'angular-countdown-timer';
 import { DataService } from './data.service';
+import { CommonModule } from '@angular/common';
+
 @NgModule({
     declarations: [    
     AppComponent,
@@ -28,10 +28,10 @@ import { DataService } from './data.service';
     CounterComponent,
     FetchDataComponent,
     CalenderComponent,
-        BarChartComponent
+    BarChartComponent
     ],
     imports: [
-     
+    CommonModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
