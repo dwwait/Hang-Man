@@ -8,7 +8,7 @@ export class DataService {
     // theme: string = "light";
     getUsersTheme() {
         //default is dark, so make it empty to revert to dark-- 'light'
-        return "";
+        return "light";
     }
     //Al die user se shit moet ek nog uit figure, gaan die cookies se data wees,
     //sal device ip wees is al wat ek interseted is in, en dan al die res van die goed wat nodig is vir die 
