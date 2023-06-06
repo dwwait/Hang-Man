@@ -10,8 +10,10 @@ export class NavMenuComponent {
 
     constructor(private dataService: DataService) { }
 
-    theme: string = this.dataService.getUsersTheme();
-
+    theme: string;//this.dataService.getUsersTheme();
+    ngOnInit() {
+        this.theme = this.dataService.getUsersTheme();
+    }
     isExpanded = false;
 
     collapse() {
