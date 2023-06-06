@@ -10,17 +10,17 @@ export class CalenderComponent {
     minDate: Date;
     maxDate: Date;
 
-    dateSelected: Date = null;
+    dateSelected: Date;
     dateSelectedString: string = null;
     today: Date;
 
-    //theme: string = "light";//defualt is dark, so make it empty to revert to dark-- 'light'
+    theme: string = "light";//default is dark, so make it empty to revert to dark-- 'light'
 
     ngOnInit() {  
-        this.today = new Date();
-        this.selected = this.today;
-        this.minDate = new Date(2022, 10, 1);
-        this.maxDate = new Date(this.today.getUTCFullYear(), this.today.getUTCMonth(), this.today.getDate());
+        // this.today = new Date();
+        // this.selected = this.today;
+        // this.minDate = new Date(2022, 10, 1);
+        // this.maxDate = new Date(this.today.getUTCFullYear(), this.today.getUTCMonth(), this.today.getDate());
     } 
     onSelect($event) {
         this.dateSelected = $event;

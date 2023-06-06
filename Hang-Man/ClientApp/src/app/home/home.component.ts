@@ -11,7 +11,7 @@ import { Graph } from '../graph.model';
 export class HomeComponent implements OnInit {
     constructor(private dataService: DataService) { }
 
-    theme: string = this.dataService.getUsersTheme();//default is dark, so make it empty to revert to dark-- 'light'
+    theme: string ;//default is dark, so make it empty to revert to dark-- 'light'
 
     //http://gesegdes.co.za/idiome/idiome.html
     wordOFtheDay: string = "So min van iets weet as n aap van godsdiens";
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.wordOFtheDay = this.wordOFtheDay.toUpperCase();       
         const today = new Date();
-                
+        this.theme = this.dataService.getUsersTheme(); 
         for (let i = 0; i < this.wordOFtheDay.length; i++)
         {
             if (this.wordOFtheDay.charAt(i) == " ") {
@@ -42,14 +42,15 @@ export class HomeComponent implements OnInit {
         document.getElementById('btnChooseDate').textContent = 'Kies ' + today.getUTCFullYear() + "/" + (today.getUTCMonth() + 1) + "/" + today.getDate();//Month is 0 index while rest is not
         
         this.dateTomorrow = new Date(`${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${(today.getDate()+1)}`);
-        this.Score = [
-            { Value: 5, Color: '#475569', Size: '', Legend: '5' },
-            { Value: 12, Color: '#475569', Size: '', Legend: '4' },
-            { Value: 15, Color: '#1b6ec2', Size: '', Legend: '3' },
-            { Value: 6, Color: '#475569', Size: '', Legend: '2' },
-            { Value: 4, Color: '#475569', Size: '', Legend: '1' },
-            { Value: 0, Color: '#475569', Size: '', Legend: 'X' },
-        ];         
+        // this.Score = [
+        //     { Value: 5, Color: '#475569', Size: '', Legend: '5' },
+        //     { Value: 12, Color: '#475569', Size: '', Legend: '4' },
+        //     { Value: 15, Color: '#1b6ec2', Size: '', Legend: '3' },
+        //     { Value: 6, Color: '#475569', Size: '', Legend: '2' },
+        //     { Value: 4, Color: '#475569', Size: '', Legend: '1' },
+        //     { Value: 0, Color: '#475569', Size: '', Legend: 'X' },
+        // ]; 
+        this.Score = this.dataService.score();        
     }       
 
     alphabet: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
@@ -61,7 +62,9 @@ export class HomeComponent implements OnInit {
         false, false, false, false, false, false];
 
     keyboardPress(item: number) {
-        //wil die verander dat jy meer as een letter op n slag kan kies        
+        //wil die verander dat jy meer as een letter op n slag kan kies
+        //Nou dink ek ek moet terug verander dat jy net een op n slag kan kies anders 
+        //is game te vinnig
         var button = document.getElementById(`btn${item + 1}`);
         if (this.keyClicked[item] == false) {
             if (this.theme != 'light') {
@@ -128,7 +131,7 @@ export class HomeComponent implements OnInit {
                         }
                         this.keyClicked[index] = false;
 
-                        this.checkGameOver();
+                        this.checkGameWon();
                     }
                     else {
                         //need to disable btn on keyboard and set selected btn to null;
@@ -202,12 +205,12 @@ export class HomeComponent implements OnInit {
                 document.getElementById(`infotext`).style.display = 'none';
                 document.getElementById(`settingstext`).style.display = 'none';
                 break;
-            case 'settings':
-                document.getElementById(`infoHeader`).textContent = 'Instellings';
-                document.getElementById(`settingstext`).style.display = 'inline';
-                document.getElementById(`infotext`).style.display = 'none';
-                document.getElementById(`erkenningtext`).style.display = 'none';
-                break;
+            // case 'settings':
+            //     document.getElementById(`infoHeader`).textContent = 'Instellings';
+            //     document.getElementById(`settingstext`).style.display = 'inline';
+            //     document.getElementById(`infotext`).style.display = 'none';
+            //     document.getElementById(`erkenningtext`).style.display = 'none';
+            //     break;
             default:
                 break;
         }
@@ -264,7 +267,7 @@ export class HomeComponent implements OnInit {
                 if (this.attemptsFailed == 4) {
                     document.getElementById('btnhint').setAttribute('disabled', 'disabled');
                 }
-                this.checkGameOver();
+                this.checkGameWon();
             }
             else {//game over
                 buttonTest.style.backgroundColor = 'red';
@@ -276,7 +279,7 @@ export class HomeComponent implements OnInit {
         }
         
     }
-    checkGameOver() {
+    checkGameWon() {
         let gameWon: boolean = true;
         for (let i = 0; i < this.wordOFtheDay.length; i++) {
             if (document.getElementById(`btnAnswer${i}`).textContent == '' && this.wordOFtheDay.charAt(i) != ' ') {
@@ -289,6 +292,7 @@ export class HomeComponent implements OnInit {
             document.getElementById(`response`).style.color = 'greenyellow';
             document.getElementById(`response`).textContent = 'YOU WON';
             document.getElementById(`response`).removeAttribute('hidden');
+
         }
     }
 }
